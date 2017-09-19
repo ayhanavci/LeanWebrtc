@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebRTC Tester</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>                   
+        <label style="font-size:18px">Lean WebRTC Demo.</label>   
+        <label style="font-size:8px">Copyright© 2017 Ayhan AVCI. <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License.</a></label>   
+        <table class="main_options" item-height="400px">
+                <tr class="main_options_tr" >
+                    <td class="main_options_td" width="20%"><label id="sockStatLabel">Server: Disconnected</label></td>
+                    <td class="main_options_td" width="80%">                        
+                        <table>
+                        <tr>
+                                <td class="sub_options_td" width="10%">
+                                        <label>Client Name:</label><input type="text" id="clientName">                                                                                                                                         
+                                </td>  
+                                <td class="sub_options_td" width="10%">
+                                        <button id="connectButton" >Connect To Server</button>        
+                                        <button id="sendTestButton">Echo Server</button>                                                                                                                       
+                                </td>      
+                                <td class="sub_options_td" width="10%">
+                                        <input type="radio" name="streamOptions" checked=1 id="enableVideo">Video<br> 
+                                        <input type="radio" name="streamOptions" id="enableSound">Sound<br>                                             
+                                        <input type="radio" name="streamOptions" id="enableBoth">Both<br>  
+                                </td>                               
+                        </tr>                       
+                        </table>
+                   </td>                                   
+                </tr>                   
+                <tr class="main_options_tr">
+                         <td class="main_options_td">
+                            <label id="signallingLabel">Call State: N/A</label>
+                            <img id="phonestateImg" src="./images/notavailable.png" style="width:50px;height:50px;">
+                        </td>                                                            
+                        <td class="main_options_td">
+                                <table>
+                                        <tr>
+                                                <td class="sub_options_td">
+                                                        <label class="RegUsers">Users List:</label><select size=5 id="usersList"></select>
+                                                </td>        
+                                                <td class="sub_options_td">
+                                                        <button id="callButton">Call</button>
+                                                        <button id="acceptButton">Accept</button>
+                                                </td>
+                                                <td class="sub_options_td">
+                                                        <button id="rejectButton">Reject</button>
+                                                        <button id="hangupButton">Hang Up</button>                                                          
+                                                </td>                                               
+                                               
+                                        </tr>                                                       
+                                </table>                                                                                                    
+                          
+                            
+                        </td>                                                                            
+                </tr>                                                       
+              </table>   
+                                      
+            <table class="streams_table">
+                    <tr class="streams_tr">
+                           <td class="streams_td">Local Stream</td>
+                           <td class="streams_td">Remote Stream</td>                                                      
+                    </tr>
+                    <tr class="streams_tr" >                        
+                            <td class="streams_td"><video  id="localVideo" autoplay muted></video> </td>                                                                                       
+                            <td class="streams_td"> <video id="remoteVideo" autoplay></video></td>                                                                                                                               
+                    </tr>                
+            </table>         
+    <script src="Client.js"></script>            
+</body>
+</html>
