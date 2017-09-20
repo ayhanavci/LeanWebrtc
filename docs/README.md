@@ -79,7 +79,7 @@ This is how it looks like. The one on the left is my notebook's camera, the one 
 
 * According to this [WebKit public announcement](https://webkit.org/blog/7726/announcing-webrtc-and-media-capture/). It is soon coming to Safari on IOS and Mac.
 
-* **WARNING: getUserMedia requires secure connection to initiate unless you connect to localhost.** You can test it on localhost or run chrome with "--unsafely-treat-insecure-origin-as-secure="[your server]:[port]" --user-data-dir=[test dir]". Remember to replace "your server and "your port" properly and some local directory as "test dir".  Opera works on localhost and otherwise requires secure connection too. Firefox should pose no problems working on localhost AND local network without any need of hocus pocus. 
+* **WARNING: getUserMedia requires secure connection to initiate unless you connect to localhost.** You can test it on localhost or run chrome with "--unsafely-treat-insecure-origin-as-secure="[your server]:[port]" --user-data-dir=[test dir]". Remember to replace "your server and "your port" properly and some local directory as "test dir".  Opera works on localhost and otherwise requires secure connection too. Firefox should pose no problems working on localhost **AND** local network without any need of hocus pocus. 
 
 ## Authors
 
