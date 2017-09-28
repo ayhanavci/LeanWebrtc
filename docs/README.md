@@ -1,18 +1,5 @@
----
-title: "Using Web RTC"
-excerpt_separator: "<!--more-->"
-categories:
-  - Projects
-  - Tutorials
-tags:
-  - Javascript
-  - WebRTC
-  - Visual Studio Code
----
+# Lean WebRTC-Phone
 
-{% include toc title="Contents" icon="file-text" %}
-
-#Lean WebRTC-Phone
 Few years ago, I was tasked with developing a web based video enabled Call Center for a customer. Back then, I had a rather short deadline so I used a third party library for it. I wanted to write my own library using the official API but that task has always been pushed back due to a torrent of priorities. But when I read webkit [announcing](https://webkit.org/blog/7726/announcing-webrtc-and-media-capture/) IPhone & Mac support is upon us, I decided to make some basic preperations for it. Coming from a low level CTI programmer (on C++ mostly) background, I felt the urge to add WebRTC to my collection. Most of the sample codes out there were either make-pretend (no proper signalling) or just huge. So i coded this little script. Anyone can feel free to use [the code](https://github.com/ayhanavci/LeanWebrtc).
 
 My goals were;
@@ -27,13 +14,14 @@ My goals were;
 * Well documented. (✓ Added a sequence diagram as well as this doc)
 * Potentially provide a basis for any future production application I may need (✓)
 
-##Structure
+## Structure
 
 * Both Client.js and Server.js have dispatcher mechanisms, calling event handlers. onSocketMessage on client, processMessage on the server.
 * A simple state mechanism is included on the client code. A production code should have proper dialogs similar to [SIP - rfc3261](https://www.ietf.org/rfc/rfc3261.txt)
 * Variable and function names tend to be long in an attempt to be self explanatory. Almost everything is logged.  
 
-##Technologies used
+## Technologies used
+
 * WebSocket
 * WebRTC (Promise based)
 * Media Streams (Promise based)
@@ -48,24 +36,27 @@ I always wanted to have an awkward conversation with JD from [Scrubs](http://www
 ![Sequence](sequence.png)
 
 ## Dependencies
+
 * Zero dependencies nor external js libraries on client code. Native & unbloated code (Hence the name Lean).
 * On the server side, I used [Node.js websockets library ws](http://websockets.github.io/ws/). I chose this library because it was a basic library fully compatible with [RFC 6455](https://tools.ietf.org/html/rfc6455). So it has no fancy room mechanisms like [socket.io](https://socket.io/) has. Any random websocket library should do the job since I only used basic features.
 
-##Prerequisites 
+## Prerequisites 
 
 * [Node.js](https://nodejs.org/en/) - Node.js® javascript runtime. I used v6.11.3.
 * Any WebRTC supporting browser. You can check [WebRTC.org](https://webrtc.org/) for a list of supported browsers. 
 * A web server to host index.html.
 
-##Installing
+## Installing
 
 * Install Node.js
 
 **Setup signalling server**
+
 * From the console, CD to server path and run "npm install" to install node modules (just websockets)
 * Run "node server.js". By default it runs on 8080 port. Edit top of the Server.js file if you want to change it.
 
 **Setup client**
+
 * Edit Client.js to change signallingServer (it is on top of the file) IP address and port to the server you are hosting.
 * You will need to host index.html. WebRTC won't work if you simply navigate to the file index.html.
 I used [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en) which was great. If you have [Python](https://www.python.org/) installed, you can run "python -m SimpleHTTPServer [Port]" (replace port) from terminal for a basic web hosting. Anything should work really (IIS, Apache etc).
@@ -95,27 +86,28 @@ This is how it looks like. The one on the left is my notebook's camera, the one 
 
 * **WARNING: getUserMedia requires secure connection to initiate unless you connect to localhost.** You can test it on localhost or run chrome with "--unsafely-treat-insecure-origin-as-secure="[your server]:[port]" --user-data-dir=[test dir]". Remember to replace "your server and "your port" properly and some local directory as "test dir".  Opera works on localhost and otherwise requires secure connection too. Firefox should pose no problems working on localhost **AND** local network without any need of hocus pocus. 
 
-##Authors
+## Authors
 
 * **Ayhan Avcı** - [Linkedin](https://www.linkedin.com/in/ayhan-avci-pmp-pmi-acp-1a95365/)
 
-##License
+## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE.md](https://github.com/ayhanavci/LeanWebrtc/blob/master/docs/LICENSE.md) file for details
 
-##History
+## History
 #### **0.1.0**
 * Signalling mechanism is designed and implemented
 * WebRTC mechanisms implemented. 
 
-##To Do
+## To Do
 * Add some simple SIP Dialog
 * Design a good GUI
 * Develop security against injections
 * Test on Android & Iphone
 * Add custom STUN / TURN servers
 
-##References
+## References
+
 * [W3C WebRTC reference](https://www.w3.org/TR/webrtc/)
 * [WebRTC.org starting point](https://webrtc.org/start/)
 * [WebSocket RFC](https://tools.ietf.org/html/rfc6455)
